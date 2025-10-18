@@ -1,17 +1,13 @@
-// app/layout.tsx
-import "./globals.css";
-import { ReactNode } from "react";
+import { ThemeProvider } from 'next-themes';
+import './globals.css';
 
-export const metadata = {
-  title: "Kensley Cadet | Portfolio",
-  description: "Crafting Code, Context, and Creativity",
-};
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-stone-200 text-black dark:bg-zinc-900 dark:text-white">
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
