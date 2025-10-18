@@ -1,8 +1,8 @@
 'use client';
 
-import Card from './Card';
+import Card, { CardProps } from './Card';
 
-const projects = [
+const projects: CardProps[] = [
   // Eventure
   {
     title: "Eventure",

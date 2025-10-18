@@ -4,6 +4,23 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
+export interface DetailImage {
+  type: 'image';
+  src: string;
+  alt: string;
+  colSpan?: number;
+  rowSpan?: number;
+}
+
+export interface CardProps {
+  title: string;
+  description: string;
+  overview?: string;
+  task?: string;
+  techStack?: string[];
+  details?: (string | DetailImage)[];
+}
+
 export default function Card({
   title,
   description,
@@ -11,7 +28,7 @@ export default function Card({
   task,
   techStack = [],
   details = [],
-}: any) {
+}: CardProps) {
   const [expanded, setExpanded] = useState(false);
   const toggleExpand = () => setExpanded(!expanded);
 
@@ -92,7 +109,7 @@ export default function Card({
 
               {/* Details grid */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 auto-rows-[260px] sm:auto-rows-[320px]">
-                {details.map((item: any, i: number) =>
+                {details.map((item, i) =>
                   typeof item === 'string' ? (
                     <motion.p
                       key={i}
