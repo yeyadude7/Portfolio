@@ -55,6 +55,18 @@ export default function Hero() {
                 University of Central Florida
               </p>
               <p className="italic text-black">
+                Master of Science in Computer Science
+              </p>
+            </div>
+            <p className="font-bold text-black">Aug 2025 — May 2026</p>
+          </div>
+
+          <div className="flex justify-between items-center w-full">
+            <div className="flex gap-2">
+              <p className="font-bold text-black">
+                University of Central Florida
+              </p>
+              <p className="italic text-black">
                 Accelerated BS to MS Program in Computer Science
               </p>
             </div>
@@ -66,10 +78,13 @@ export default function Hero() {
               <p className="font-bold text-black">
                 University of Central Florida
               </p>
-              <p className="italic text-black">Bachelor of Science in Computer Science</p>
+              <p className="italic text-black">
+                Bachelor of Science in Computer Science
+              </p>
             </div>
             <p className="font-bold text-black">July 2022 — May 2025</p>
           </div>
+
         </div>
 
        <div className="border-2"></div>
