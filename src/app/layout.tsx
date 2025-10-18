@@ -1,13 +1,17 @@
-import './globals.css'
-import { ReactNode } from 'react'
-import Home from '../pages/Home'
+// app/layout.tsx
+import "./globals.css";
+import { ReactNode } from "react";
 
-export default function RootLayout({ }: { children: ReactNode }) {
+export const metadata = {
+  title: "Kensley Cadet | Portfolio",
+  description: "Crafting Code, Context, and Creativity",
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-stone-200 text-black dark:bg-zinc-900 dark:text-white">
-        <Home />
-        <main className="max-w-4xl mx-auto p-4"></main>
+        {children}
       </body>
     </html>
   );

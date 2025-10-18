@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import Footer from '../components/Footer';
+import Navbar from './Navbar';
+import Hero from './Hero';
+import Footer from './Footer';
 import ProjectGrid from '@/components/ProjectGrid';
 
 const Home: React.FC = () => {
