@@ -4,150 +4,130 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
-interface CardProps {
-  title: string;
-  description: string;
-  overview?: string;
-  task?: string;
-  details?: (
-    | string
-    | { type: 'image'; src: string; alt: string; colSpan?: number; rowSpan?: number }
-  )[];
-}
-
 export default function Card({
   title,
   description,
   overview,
   task,
+  techStack = [],
   details = [],
-}: CardProps) {
+}: any) {
   const [expanded, setExpanded] = useState(false);
   const toggleExpand = () => setExpanded(!expanded);
 
-  const getColSpanClass = (colSpan?: number) => {
-  switch (colSpan) {
-    case 2:
-      return 'md:col-span-2';
-    case 3:
-      return 'md:col-span-3';
-    default:
-      return 'md:col-span-1';
-  }
-};
-
-const getRowSpanClass = (rowSpan?: number) => {
-  switch (rowSpan) {
-    case 2:
-      return 'md:row-span-2 min-h-[500px]';
-    case 3:
-      return 'md:row-span-3 min-h-[750px]';
-    default:
-      return 'md:row-span-1 min-h-[250px]';
-  }
-};
-
   return (
-    <div
-      className="cursor-pointer py-50 my-2 w-full"
+    <motion.div
+      layout
       onClick={toggleExpand}
+      className="relative cursor-pointer w-full max-w-7xl mx-auto my-8 px-6 sm:px-10 py-16 bg-stone-50 dark:bg-zinc-900 overflow-hidden"
     >
-      <motion.div
-        initial={false}
-        animate={{ justifyContent: 'start', alignItems: 'start' }}
-        className="flex flex-col"
-      >
-        <motion.h3
-          className="text-5xl font-bold text-black"
-          animate={{ y: expanded ? -30 : 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          {title}
-        </motion.h3>
-        <motion.p
-          className="text-black text-lg mt-2"
-          animate={{ y: expanded ? -30 : 0 }}
-          transition={{ duration: 0.4, delay: 0.05 }}
-        >
-          {description}
-        </motion.p>
 
+      <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+        {/* --- Left: Title + Subtitle + Tech stack --- */}
+        <div className="flex-shrink-0 w-full md:max-w-sm lg:max-w-md">
+          <motion.h2
+            className="text-5xl sm:text-5xl lg:text-6xl font-extrabold uppercase leading-[0.95] tracking-tight text-black dark:text-white mb-6"
+            animate={{ y: expanded ? -10 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {title}
+          </motion.h2>
+
+          <div className="bg-red-500 text-white text-sm sm:text-base font-medium inline-block px-4 py-2 mb-4">
+            {description}
+          </div>
+
+          {/* Tech stack list */}
+          {expanded && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {techStack.map((tech: string, idx: number) => (
+                <span
+                  key={idx}
+                  className="text-xs uppercase tracking-wide px-3 py-1 border border-black/10 dark:border-white/10 bg-stone-100 dark:bg-zinc-800 text-black dark:text-gray-200 font-semibold"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* --- Divider (floating) --- */}
+        {expanded && (
+          <div className="hidden md:block w-[2px] bg-black/10 dark:bg-white/10 self-stretch"></div>
+        )}
+
+        {/* --- Right column: Expanded content --- */}
         <AnimatePresence>
           {expanded && (
             <motion.div
-              className="mt-10 space-y-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
+              key="expanded"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.45 }}
+              className="flex-1 space-y-10"
             >
+              {/* Overview + Task */}
               {(overview || task) && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-2">
-                    <h4 className="text-xl font-semibold text-black mb-2">
+                <div className="bg-stone-200 dark:bg-zinc-800 p-8 rounded-sm grid sm:grid-cols-3 gap-8">
+                  <div className="sm:col-span-2">
+                    <h4 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-black dark:text-white mb-2">
                       Overview
                     </h4>
-                    <p className="text-black text-base leading-relaxed">
+                    <p className="text-sm sm:text-base text-black dark:text-gray-300 leading-relaxed">
                       {overview}
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-black mb-2">
+                    <h4 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-black dark:text-white mb-2">
                       My Task
                     </h4>
-                    <p className="text-black text-base leading-relaxed">
+                    <p className="text-sm sm:text-base text-black dark:text-gray-300 leading-relaxed">
                       {task}
                     </p>
                   </div>
                 </div>
               )}
 
-              <div className="border-1 border-black"></div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[250px] gap-6 ">
-                {details.map((item, index) =>
+              {/* Details grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 auto-rows-[260px] sm:auto-rows-[320px]">
+                {details.map((item: any, i: number) =>
                   typeof item === 'string' ? (
                     <motion.p
-                      key={index}
-                      className="text-black text-base leading-relaxed md:row-span-1 min-h-[250px]"
-                      initial={{ y: 20, opacity: 0 }}
+                      key={i}
+                      className="text-sm sm:text-base text-black dark:text-gray-300 leading-relaxed bg-white dark:bg-zinc-950 p-5 border-l-4 border-black/80 font-light"
+                      initial={{ y: 15, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: i * 0.05 }}
                     >
                       {item}
                     </motion.p>
                   ) : (
                     <motion.div
-  key={index}
-  className={`relative w-full ${getColSpanClass(item.colSpan)} ${getRowSpanClass(item.rowSpan)} group`}
-  initial={{ y: 20, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ delay: index * 0.1 }}
->
-  <div className="relative w-full h-full overflow-hidden rounded-lg">
-    {/* Image with hover opacity */}
-    <Image
-      src={item.src}
-      alt={item.alt}
-      className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80"
-      width={800}
-      height={600}
-      sizes="(min-width: 768px) 33vw, 100vw"
-    />
-
-    {/* Overlay strip with alt text */}
-    <div className="absolute bottom-0 left-0 w-full bg-gray-800 text-white text-sm px-3 py-2 opacity-0 group-hover:opacity-90 transition-opacity duration-300">
-      {item.alt}
-    </div>
-  </div>
-</motion.div>
+                      key={i}
+                      className="relative overflow-hidden rounded-none"
+                      initial={{ y: 15, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: i * 0.05 }}
+                    >
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        fill
+                        className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                      />
+                      <div className="absolute bottom-0 left-0 bg-black/80 text-white text-xs sm:text-sm px-3 py-2 uppercase tracking-wide">
+                        {item.alt}
+                      </div>
+                    </motion.div>
                   )
                 )}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 }

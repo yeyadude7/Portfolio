@@ -3,103 +3,128 @@
 import Card from './Card';
 
 const projects = [
+  // Eventure
   {
-    title: 'Eventure',
-    description: 'MERN Stack application for event management',
-    overview: 'Eventure is a full-stack web application designed to help users discover, plan, and manage local events in real-time. It combines interactive mapping, social filtering, and scheduling tools to simplify spontaneous or planned outings — from local concerts to community meetups.',
-    task: 'Frontend Engineer & Project Manager',
+    title: "Eventure",
+    description: "MERN application for real-time event discovery",
+    overview:
+      "A full-stack web app that helps users discover and plan local events in real time. Built around interactive maps, social filters, and scheduling tools — making spontaneous outings effortless.",
+    task: "Frontend Engineer & Project Manager",
+    techStack: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Notion.so"],
     details: [
-      'Managed a cross-functional team overseeing the development of Eventure, an event-searching platform designed for a competition, ensuring the project met deadlines and maintained quality standards',
-      'Led biweekly sprint planning sessions using Notion.so, facilitating progress tracking, task prioritization, and team collaboration to ensure smooth development cycles',
-      'Developed the frontend of the application using React.js and Tailwind CSS, building a responsive, intuitive user interface for a seamless event-searching, filtering, and booking experience',
+      "Directed a small cross-functional team to design and ship a competition-ready event platform on tight deadlines.",
+      "Led sprint planning in Notion to track progress, prioritize features, and maintain development flow.",
+      "Developed a fully responsive interface in React and Tailwind CSS, focusing on clean UX and fast search performance.",
     ],
   },
+
+  // Composition Calendar
   {
-    title: 'Composition Calendar',
-    description: 'Web/mobile calendar for managing music compositions',
-    overview: 'Composition Calendar is a dynamic visual interface built to organize, track, and showcase creative works (e.g., musical compositions, digital art, or written projects) over time. The application functions as an interactive portfolio and scheduling tool, allowing users to document the creative process across weeks or months with clear visual context.',
-    task: 'Full-stack Engineer & Mobile Developer',
+    title: "Composition Calendar",
+    description: "Web & mobile planner for creative projects",
+    overview:
+      "A cross-platform calendar designed to organize and showcase creative work — from music to art — through an interactive, timeline-based interface.",
+    task: "Full-Stack Engineer & Mobile Developer",
+    techStack: ["Bootstrap 5", "Node.js", "Express", "Postman", "Swagger Hub", "JavaScript"],
     details: [
-      'Built a tasked-oriented calendar website and mobile application with a small cohort; offers CRUD operations for events and tasks, enabling users to manage their schedules effectively',
+      "Built a collaborative calendar system supporting CRUD scheduling and live task visualization.",
       {
         type: "image" as const,
-        src: '/images/CompCal/mobile_cal.png',
-        alt: 'Mobile Calendar UI',
+        src: "/images/CompCal/mobile_cal.png",
+        alt: "Mobile calendar interface showing date navigation and event tiles in Composition Calendar app.",
         colSpan: 1,
-        rowSpan: 3 // Make it taller
+        rowSpan: 2,
       },
-      'Created frontend for both Android and Web users, with optimization from frameworks like Bootstrap 5',
+      "Created mobile and web frontends optimized for both Android and browser devices using Bootstrap 5.",
       {
         type: "image" as const,
-        src: '/images/CompCal/tasks_mobile.png',
-        alt: 'Mobile Tasks UI',
+        src: "/images/CompCal/tasks_mobile.png",
+        alt: "Mobile task manager screen displaying active task list and add task interface in Composition Calendar.",
         colSpan: 1,
-        rowSpan: 3 // Make it taller
+        rowSpan: 3,
       },
-      'Integrated automated Mobile Unit Testing using Visual Studio Code, ensuring reliability and performance across platforms',
-      'Developed and reviewed API functions with NodeJS and ExpressJS, using Postman and Swagger Hub for unit testing',
+      "Integrated automated unit testing in VS Code to ensure reliability across form inputs and task flows.",
+      "Implemented backend APIs with Node.js + Express, tested through Postman and Swagger for performance validation.",
       {
         type: "image" as const,
-        src: '/images/CompCal/home_web.png',
-        alt: 'Journal-Like Login UI',
+        src: "/images/CompCal/home_web.png",
+        alt: "Web-based login interface styled like a journal for Composition Calendar app.",
         colSpan: 2,
-        rowSpan: 2 // Make it taller
+        rowSpan: 2,
       },
-      'Delivered a technical presentation showcasing the website and mobile app, along with use case diagrams, prototypes, end-to-end and unit testing, and visual designs',
+      "Presented the app in a technical showcase covering use-case design, prototype workflows, and end-to-end testing.",
       {
         type: "image" as const,
-        src: '/images/CompCal/home_mobile.png',
-        alt: 'Mobile Home UI',
+        src: "/images/CompCal/home_mobile.png",
+        alt: "Mobile home interface with daily overview and creative project timeline in Composition Calendar app.",
         colSpan: 1,
-        rowSpan: 3 // Make it taller
+        rowSpan: 3,
       },
-    
     ],
   },
+
+  // BrainBeatz
   {
-    title: 'BrainBeatz',
-    description: 'EEG-powered music production platform',
-    overview: 'Brainbeatz is a cross-platform neurotechnology application designed to visualize real-time EEG (electroencephalogram) brainwave data streamed directly from a consumer-grade EEG headset. The application interprets raw brainwave signals and presents them in an interactive, user-friendly interface — enabling users to explore their cognitive states such as focus, relaxation, and stress in real time.',
-    task: 'Full-Stack & Backend Engineer',
+    title: "BrainBeatz",
+    description: "EEG-powered music generation platform",
+    overview:
+      "A neurotechnology project that visualizes live EEG brainwave data and transforms it into interactive soundscapes — blending cognitive science with digital art.",
+    task: "Full-Stack & Backend Engineer",
+    techStack: ["Node.js", "Express", "MySQL", "JavaScript", "SSH", "File System (fs)"],
     details: [
-      'Refactored the backend architecture by replacing Prisma ORM with custom SQL queries and JavaScript promises, optimizing performance and providing greater control over database interactions',
+      "Refactored backend architecture by replacing Prisma ORM with custom SQL queries for granular data control.",
       {
         type: "image" as const,
-        src: '/images/Brainbeatz/brainbeatz_image1.png',
-        alt: 'BrainBeatz Home UI',
+        src: "/images/Brainbeatz/brainbeatz_image1.png",
+        alt: "BrainBeatz home interface displaying EEG waveform visualizer and playback controls.",
         colSpan: 2,
-        rowSpan: 2 
+        rowSpan: 1,
       },
-      'Enhanced data storage efficiency by implementing a new file storage system that stored audio and image files on an SSH client instead of the database, using Node.js path and fs modules to manage file paths and optimize data retrieval',
-      'Developed new asynchronous functions to streamline data exchange between the backend and frontend, ensuring smoother data preprocessing and faster UI updates',
+      "Designed a secure file-storage layer using Node.js fs and SSH for fast audio/image retrieval outside the database.",
+      "Implemented asynchronous pipelines to stream EEG data in real time, improving response latency and UI feedback.",
     ],
   },
+
+  // FakeFlix
   {
-    title: 'FakeFlix',
-    description: 'Netflix clone focused on user UX polish',
-    overview: 'Fakeflix is a responsive, pixel-perfect clone of Netflix\'s front-end interface designed to demonstrate dynamic UI rendering, API-driven content fetching, and modern component design. It recreates the user experience of a streaming platform with a focus on smooth interaction, modular components, and aesthetic polish.',
-    task: 'Frontend Engineer',
+    title: "FakeFlix",
+    description: "Netflix-inspired UI clone focused on UX polish",
+    overview:
+      "A faithful front-end recreation of Netflix built to explore modular UI components, dynamic content fetching, and animation-driven UX design.",
+    task: "Frontend Engineer",
+    techStack: ["React", "Firebase", "Redux", "Chrome DevTools", "Git"],
     details: [
-      'Worked with a small cohort to update an open-source project labeled Fakeflix, a Netflix clone, for optimization and features for users',
-      'Updated the movie detail modal to display actor information and added a feature for users to view all movies starring a specific actor, improving user navigation and engagement',
-      'Added Firebase and multiple redux states to store user-developed folders within the database, allowing users to create and manage personalized movie collections',
-      'Worked under multiple sprint cycles while employing Git version control, software documentation, and manual unit testing using Chrome Developer Tools'
+      "Enhanced an open-source Netflix clone by refining navigation flow and adding richer detail modals for each movie.",
+      "Built an actor-view feature that lets users browse films by performer, improving engagement and discoverability.",
+      "Integrated Firebase and Redux to persist custom movie collections across sessions.",
+      "Collaborated through sprint cycles using Git and manual QA in Chrome DevTools for smooth iteration.",
     ],
   },
 ];
 
+
+
 export default function ProjectsGrid() {
   return (
-    <div className="max-w-7xl mx-auto">
-      {Array.from({ length: Math.ceil(projects.length / 2) }).map((_, rowIdx) => (
-        <div key={rowIdx} className="grid grid-cols-1">
-          {projects.slice(rowIdx * 2, rowIdx * 2 + 2).map((project, colIdx) => (
-            <div key={colIdx} className="relative p-4 border-b-2 border-black">
+    <div className="relative w-full bg-stone-50 dark:bg-zinc-950">
+      
+      <div className="">
+        <div className="">
+          {projects.map((project, i) => (
+            <div
+              key={i}
+            >
               <Card {...project} />
+              {/* Horizontal divider that doesnt span the whole page */}
+              {i < projects.length - 1 && (
+                <div className="w-full max-w-7xl mx-auto px-6 sm:px-10">
+                  <div className="h-[2px] bg-black/10 dark:bg-white/10 my-8"></div>
+                </div>
+              )}
             </div>
           ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }

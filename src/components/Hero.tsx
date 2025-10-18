@@ -2,92 +2,102 @@
 
 export default function Hero() {
   return (
-    <section className="w-full py-10 text-black">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 gap-10 items-center">
-        {/* Name and Role */}
-        <div>
-          <div className="flex flex-col">
-            <h1 className="text-white text-6xl md:text-[150px]/38 font-sans font-medium tracking-tight leading-none text-left">
-              Crafting Code, Context, and Creativity
-            </h1>
-            <h1 className="text-6xl md:text-[150px]/38 font-sans font-medium tracking-tight leading-none text-right">
-              &mdash; enter the Design Work of Kensley Cadet
-            </h1>
-          </div>
-          <p className="mt-4 text-2xl text-black">
-            Software Engineer &amp; Computer Science Researcher
+    <section className="relative w-full overflow-hidden bg-stone-50 dark:bg-zinc-900">
+      {/* Background accent blocks */}
+      <div className="absolute top-0 left-0 lg:w-[10%] md:w-[5%] h-full bg-red-500"></div>
+
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-12 py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 items-start">
+        {/* --- Left column: Title / Intro --- */}
+        <div className="flex flex-col justify-start">
+          <h1 className="font-extrabold uppercase text-[clamp(3rem,7vw,7.5rem)] leading-[0.9] tracking-tight text-black dark:text-white mb-8 z-10">
+            Crafting Code,
+            <br />
+            Context,
+            <br />
+            <span className="text-red-500">and Creativity</span>
+          </h1>
+
+          <p className="text-lg sm:text-xl font-medium text-black dark:text-gray-200 border-l-4 border-red-500 pl-4 mb-8 max-w-sm">
+            Software Engineer & Computer Science Researcher
+          </p>
+
+          <p className="text-sm uppercase tracking-widest text-black/70 dark:text-white/70">
+            The design work of Kensley Cadet
           </p>
         </div>
 
-        <div className="border-2"></div>
+        {/* --- Right column: Bio --- */}
+        <div className="flex flex-col gap-8 text-lg text-black dark:text-gray-200">
+          <div>
+            <h2 className="font-bold uppercase tracking-widest text-sm mb-2 text-red-500">
+              About Me
+            </h2>
+            <p className="leading-relaxed">
+              Hi, I&apos;m Kensley Cadet — a full-stack developer, computer vision
+    researcher, and graduate student at the University of Central Florida. I&apos;m
+    currently pursuing my Master&apos;s in Computer Science, exploring how systems design,
+    concurrency, and machine learning intersect in real-world applications.
+            </p>
+            <p className="leading-relaxed mt-4">
+              My work spans full-stack web development (Node.js, React, MongoDB) and applied
+    machine learning, particularly in computer vision.
+    I’ve built projects involving <span className="">action recognition,
+    object detection, segmentation, and multimodal vision-language models</span>, often
+    fine-tuning frameworks like PyTorch and OpenCV on custom datasets.
+            </p>
+            <p className="leading-relaxed mt-4">
+              Beyond the technical side, I focus on creating systems that balance efficiency and
+              clarity — whether optimizing backend queues for performance or training a neural
+              model to understand human motion. I also create content that explains computer
+              science and AI concepts in plain language, bridging creativity and computation.
+            </p>
+            <p className="leading-relaxed mt-4">
+              Outside of work, I train in martial arts, weightlifting, and endurance challenges —
+              practices that mirror my approach to engineering: consistent, experimental, and
+              always improving.
+            </p>
+          </div>
 
-        {/* Bio / CTA */}
-        <div className="flex flex-col gap-2 text-lg text-gray-700">
-          <h1 className="font-semibold text-2xl text-black">About Me</h1>
-          <p className="text-black">
-            Hi, I&apos;m Kensley Cadet &mdash; a backend-focused fullstack
-            developer, content creator, and graduate student at the University
-            of Central Florida. I&apos;m currently pursuing my Master&apos;s in
-            Computer Science with a focus on research, building on my foundation
-            in backend development, systems design, and computational complexity.
-          </p>
-          <p className="text-black">
-            My experience spans fullstack web development (Node.js, React), data
-            engineering, and even interdisciplinary work like converting
-            real-time brainwave data into music. I&apos;m passionate about
-            building elegant, modular systems and understanding the &quot;why&quot;
-            behind every technical decision.
-          </p>
-          <p className="text-black">
-            Beyond the code, I create content that explores computer science
-            concepts in plain language &mdash; blending creativity with clarity.
-            I also enjoy pushing my limits through martial arts, weight
-            training, and personal growth challenges.
-          </p>
+          <div>
+            <h2 className="font-bold uppercase tracking-widest text-sm mb-2 text-red-500">
+              Education
+            </h2>
+
+            <div className="flex flex-col divide-y divide-black/24 dark:divide-white/10 ">
+              {[
+                {
+                  school: "University of Central Florida",
+                  degree: "Master of Science in Computer Science",
+                  date: "Aug 2025 — May 2026",
+                },
+                {
+                  school: "University of Central Florida",
+                  degree: "Accelerated BS–MS in Computer Science",
+                  date: "Aug 2024 — May 2025",
+                },
+                {
+                  school: "University of Central Florida",
+                  degree: "Bachelor of Science in Computer Science",
+                  date: "July 2022 — May 2025",
+                },
+              ].map((edu, i) => (
+                <div
+                  key={i}
+                  className="flex justify-between items-start py-3 text-base"
+                >
+                  <div className="flex flex-col">
+                    <p className="font-bold">{edu.school}</p>
+                    <p className="italic">{edu.degree}</p>
+                  </div>
+                  <p className="font-medium">{edu.date}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+
+          
         </div>
-
-        {/* Education */}
-        <div className="flex flex-col text-lg text-gray-700">
-          <h1 className="font-semibold text-2xl text-black pb-2">Education</h1>
-
-          <div className="flex justify-between items-center w-full">
-            <div className="flex gap-2">
-              <p className="font-bold text-black">
-                University of Central Florida
-              </p>
-              <p className="italic text-black">
-                Master of Science in Computer Science
-              </p>
-            </div>
-            <p className="font-bold text-black">Aug 2025 &mdash; May 2026</p>
-          </div>
-
-          <div className="flex justify-between items-center w-full">
-            <div className="flex gap-2">
-              <p className="font-bold text-black">
-                University of Central Florida
-              </p>
-              <p className="italic text-black">
-                Accelerated BS to MS Program in Computer Science
-              </p>
-            </div>
-            <p className="font-bold text-black">Aug 2024 &mdash; May 2025</p>
-          </div>
-
-          <div className="flex justify-between items-center w-full">
-            <div className="flex gap-2">
-              <p className="font-bold text-black">
-                University of Central Florida
-              </p>
-              <p className="italic text-black">
-                Bachelor of Science in Computer Science
-              </p>
-            </div>
-            <p className="font-bold text-black">July 2022 &mdash; May 2025</p>
-          </div>
-        </div>
-
-        <div className="border-2"></div>
       </div>
     </section>
   );
